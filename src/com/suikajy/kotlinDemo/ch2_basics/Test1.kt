@@ -1,5 +1,7 @@
 package com.suikajy.kotlinDemo.ch2_basics
 
+import com.suikajy.kotlinDemo.ch2_basics.Color.*
+
 fun main(args: Array<String>) {
     val name = "world"
     println("hello $name")
@@ -28,4 +30,13 @@ class Rectangle(val height: Int, val width: Int) {
         get() {
             return height == width
         }
+
+    val isSquare2: Boolean
+        get() = height == width
+}
+
+fun getWarmth2(color: Color) = when (color) {
+    RED, ORANGE, YELLOW -> "warm"
+    GREEN -> "neutral"
+    BLUE, INDIGO, VIOLET -> "cold"
 }
