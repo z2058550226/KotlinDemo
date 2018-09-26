@@ -1,5 +1,5 @@
 package com.suikajy.kotlinDemo
 
-fun main(args: Array<String>) {
-    println("suikajy")
-}
+import com.suikajy.kotlinDemo.ch3_function.lastChar as last
+
+fun main(args: Array<String>) = println("suikajy".last())
