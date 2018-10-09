@@ -6,6 +6,10 @@ interface OnClickListener {
 
 class Window {
     lateinit var onClickListener: OnClickListener
+
+    fun setListener(listener: OnClickListener) {
+
+    }
 }
 
 fun main(args: Array<String>) {
@@ -24,4 +28,5 @@ fun countClicks(window: Window) {
             clickCount++
         }
     }
+//    window.onClickListener = { print() }
 }
