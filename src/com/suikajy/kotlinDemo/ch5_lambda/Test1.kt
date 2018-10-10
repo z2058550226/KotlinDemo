@@ -61,7 +61,7 @@ fun findOldest2() {
     val list = listOf(1, 2, 3, 4)
     println(list.filter { it % 2 == 0 }) //[2, 4]
 
-    println(people.filter { it.age > 30 })//[Person(name=Bob, age=31)]
+    println(people.filter { it.age > 30 })//[JavaPerson(name=Bob, age=31)]
 
     println(list.map { it * it }) // [1, 4, 9, 16]
 

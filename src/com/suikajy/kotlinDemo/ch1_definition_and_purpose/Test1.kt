@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     val oldest = persons.maxBy { it.age ?: 0 } // lambda表达式；Elvis/爱偶维斯/运算符
     println("The oldest is $oldest")// 字符串模板
 
-    // output : The oldest is Person(name=Bob, age=29)
+    // output : The oldest is JavaPerson(name=Bob, age=29)
     // 输出利用了自动生成的toString方法
 }
 

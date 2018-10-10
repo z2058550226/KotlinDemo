@@ -13,5 +13,5 @@ fun main(args: Array<String>) {
     // count也可以用size属性获取，但会创建中间对象效率低，自行取舍
     println(people.filter(canBeInClub27).size) // 和上句等效
     // 找出第一个符合条件的元素
-    println(people.find(canBeInClub27)) // Person(name=Alice, age=21)
+    println(people.find(canBeInClub27)) // JavaPerson(name=Alice, age=21)
 }
