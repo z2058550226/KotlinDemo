@@ -18,7 +18,7 @@ fun splitFilename2(fullName: String): NameComponents {
 }
 
 fun printEntries(map: Map<String, String>) {
-    // 在
+    // 在in循环中用解构声明
     for ((key, value) in map) {
         println("$key -> $value")
     }
@@ -33,4 +33,9 @@ fun main(args: Array<String>) {
     val (name, ext) = splitFilename("example.kt")
     println(name) // example
     println(ext) // kt
+
+    val map = mapOf("Oracle" to "Java", "jetBrain" to "Kotlin")
+    printEntries(map)
+    //Oracle -> Java
+    //jetBrain -> Kotlin
 }
