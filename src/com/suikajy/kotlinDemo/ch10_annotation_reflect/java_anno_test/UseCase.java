@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo.ch10_annotation_reflect;
+package com.suikajy.kotlinDemo.ch10_annotation_reflect.java_anno_test;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
