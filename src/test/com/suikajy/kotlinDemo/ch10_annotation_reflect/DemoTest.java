@@ -1,6 +1,6 @@
 package test.com.suikajy.kotlinDemo.ch10_annotation_reflect;
 
-import com.suikajy.kotlinDemo.ch10_annotation_reflect.Demo;
+import com.suikajy.kotlinDemo.ch10_annotation_reflect.junit_test.Demo;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
