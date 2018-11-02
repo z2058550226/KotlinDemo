@@ -19,6 +19,7 @@ fun main(args: Array<String>) {
 
 }
 
+
 annotation class JsonName(val name: String, val nickName: String)
 
 
