@@ -10,4 +10,8 @@ fun main(args: Array<String>) {
     println(1.2e-10 + 2)
 
     map[1] = "one"
+
+    val arr = arrayListOf(1, 2, 3)
+    val joinToString = arr.joinToString { "num: $it" }
+    println(joinToString)
 }
