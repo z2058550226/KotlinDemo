@@ -1,5 +1,6 @@
 package com.suikajy.kotlinDemo
 
+import kotlinx.coroutines.GlobalScope
 import com.suikajy.kotlinDemo.ch3_function.lastChar as last
 
 val map = mutableMapOf<Int, String>()
@@ -14,4 +15,5 @@ fun main(args: Array<String>) {
     val arr = arrayListOf(1, 2, 3)
     val joinToString = arr.joinToString { "num: $it" }
     println(joinToString)
+
 }
