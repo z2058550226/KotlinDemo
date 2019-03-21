@@ -2,11 +2,8 @@ package com.suikajy.kotlinDemo;
 
 public class JavaMain {
     public static void main(String[] args) {
-//        var list = List.of("aaa", "bbb", "ccc");
-//        var listFilter = list.stream().filter(s -> s.equals("ccc")).iterator();
-//        while (listFilter.hasNext()) {
-//            System.out.println(listFilter.next());
-//        }
-//        System.out.println(listFilter);
+        for (int i = 0; i < 100; i++) {
+            System.out.println("a");
+        }
     }
 }
