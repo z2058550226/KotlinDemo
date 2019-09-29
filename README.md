@@ -5,4 +5,4 @@
 - JVM: java10
 
 ### Coroutine
-The coroutine part is refered to the guide example of the [guide](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
+The coroutine part is refered to the [guide](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
