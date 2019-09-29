@@ -3,10 +3,23 @@
 package com.suikajy.kotlinDemo.coroutines.guide.sec1_basic
 
 import kotlinx.coroutines.*
+import java.lang.Thread.sleep
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.CoroutineContext
 
-fun main() {
-    test5()
+fun main()  {
+    val scope = CoroutineScope(Dispatchers.IO)
+    println("main thread: " + Thread.currentThread())
+    scope.launch {
+        testSuspend()
+        println("scope thread: " + Thread.currentThread())
+    }
+    TimeUnit.SECONDS.sleep(3)
+}
+
+suspend fun testSuspend() {
+    delay(2000)
+    println("suspend: " + Thread.currentThread())
 }
 
 /**
