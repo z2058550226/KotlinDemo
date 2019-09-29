@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo.coroutines.sec1_basic
+package com.suikajy.kotlinDemo.coroutines.guide.sec1_basic
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo.coroutines.sec4_context_dispatcher
+package com.suikajy.kotlinDemo.coroutines.guide.sec4_context_dispatcher
 
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

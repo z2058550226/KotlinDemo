@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo.coroutines.sec2_cancel
+package com.suikajy.kotlinDemo.coroutines.guide.sec2_cancel
 
 import kotlinx.coroutines.*
 

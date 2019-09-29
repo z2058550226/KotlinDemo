@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo.coroutines.sec3_compose
+package com.suikajy.kotlinDemo.coroutines.guide.sec3_compose
 
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis

@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.suikajy.kotlinDemo.coroutines.sec1_basic
+package com.suikajy.kotlinDemo.coroutines.guide.sec1_basic
 
 import kotlinx.coroutines.*
 import java.util.concurrent.TimeUnit
@@ -9,6 +9,9 @@ fun main() {
     test5()
 }
 
+/**
+ * simple hello world
+ */
 fun test0(args: Array<String>) {
     GlobalScope.launch {
         delay(1000L)
@@ -26,6 +29,9 @@ fun test1() {
 //    }.start()
 }
 
+/**
+ * coroutine has blocking and non-blocking
+ */
 fun test2() {
     GlobalScope.launch {
         delay(1000L)
