@@ -16,4 +16,15 @@ fun main(args: Array<String>) {
     val joinToString = arr.joinToString { "num: $it" }
     println(joinToString)
 
+    listOf(1, 2, 3).apply {
+        filterNot { it == 2 }.forEach(::println)
+    }
+
+    val uri = U(null)
+    val set = listOf("a", "b", null)
+    println(set.filterNotNull())
+
 }
+
+
+data class U(val schemes: String?)

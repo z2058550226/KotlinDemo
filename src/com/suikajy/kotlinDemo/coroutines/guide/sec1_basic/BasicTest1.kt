@@ -8,18 +8,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
 fun main()  {
-    val scope = CoroutineScope(Dispatchers.IO)
-    println("main thread: " + Thread.currentThread())
-    scope.launch {
-        testSuspend()
-        println("scope thread: " + Thread.currentThread())
-    }
-    TimeUnit.SECONDS.sleep(3)
-}
 
-suspend fun testSuspend() {
-    delay(2000)
-    println("suspend: " + Thread.currentThread())
 }
 
 /**
@@ -65,7 +54,7 @@ fun test3() = runBlocking {
         println("World!")
     }
     println("Hello,") // 主协程立即继续跑
-    delay(2000L)      // 延迟2s，让jvm不挂掉
+   // delay(2000L)      // 延迟2s，让jvm不挂掉
 }
 
 fun test4() = runBlocking<Unit> {
@@ -75,6 +64,7 @@ fun test4() = runBlocking<Unit> {
         println("World!")
     }
     println("Hello,")
+
     job.join() // 等到子协程完成
 }
 

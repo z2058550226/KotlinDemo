@@ -82,6 +82,8 @@ fun test4f1() = runBlocking {
                 println("I'm sleeping $i ...")
                 delay(500L)
             }
+        } catch (e: Exception) {
+            println("catch# $e")
         } finally {
             println("I'm running finally")
         }
@@ -95,6 +97,7 @@ fun test4f1() = runBlocking {
 
 // 不可取消协程
 // 少数情况下，你可能需要一个无法被取消的协程，那么就使用withContext(NonCancellable)
+// 在通过CancellationException导致的finally块中不能直接使用suspend方法，加上withContext(NonCancellable)是一种解决方案。
 fun test5f1() = runBlocking {
     //sampleStart
     val job = launch {
@@ -123,13 +126,24 @@ fun test5f1() = runBlocking {
 // 来包裹一个协程即可在设定时间的时候自动取消它，类似于js
 fun test6f1() = runBlocking {
     //sampleStart
+    println("1# ${Thread.currentThread()}")
+    // withTimeout 会直接使用当前Scope
+
     withTimeout(1300L) {
-        repeat(1000) { i ->
-            println("I'm sleeping $i ...")
-            delay(500L)
+        try {
+            println("2# ${Thread.currentThread()}")
+            repeat(1000) { i ->
+                println("I'm sleeping $i ...")
+                delay(500L)
+            }
+        } catch (e: Exception) {
+            println("catch# $e")
+        } finally {
+            println("finally#")
         }
     }
 //sampleEnd
+    delay(10000)
 }
 
 // withTimeoutOrNull 在超时时不会抛出CancellationException，而是返回一个null，感觉更方便一些

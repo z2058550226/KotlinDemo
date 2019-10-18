@@ -18,4 +18,5 @@ fun main(args: Array<String>) {
     println(people.asSequence().map(Person::name).filter { it.length < 4 }.toList())
     // 先过滤后映射则可以明显减少运算次数
     println(people.asSequence().filter { it.name.length < 4 }.map(Person::name).toList())
+
 }
