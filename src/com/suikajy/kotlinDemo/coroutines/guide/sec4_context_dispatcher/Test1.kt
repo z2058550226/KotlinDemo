@@ -5,11 +5,10 @@ import kotlinx.coroutines.*
 // dispatcher类似java的Executor，指定协程的工作线程是线程池，还是当前线程，还是主线程
 // 在launch或者async之类的函数都有一个可选的参数就是Dispatcher
 fun main() {
-    test10()
+    test2()
 }
 
 fun test1() = runBlocking<Unit> {
-    //sampleStart
     launch {
         // context of the parent, main runBlocking coroutine
         println("main runBlocking      : I'm working in thread ${Thread.currentThread().name}")
@@ -26,21 +25,20 @@ fun test1() = runBlocking<Unit> {
         // will get its own new thread
         println("newSingleThreadContext: I'm working in thread ${Thread.currentThread().name}")
     }
-//sampleEnd
 }
 
 // Unconfined和confined的区别
 fun test2() = runBlocking<Unit> {
     //sampleStart
     launch(Dispatchers.Unconfined) {
-        //
+        // 继承上下文的调度器运行，但当这里的调度器被delay方法改变为Default之后，自由调度器不会再将调度线程切换回来。
         // not confined -- will work with main thread
         println("Unconfined      : I'm working in thread ${Thread.currentThread().name}")
         delay(500)
         println("Unconfined      : After delay in thread ${Thread.currentThread().name}")
     }
     launch {
-        // 继承上下文的线程运行
+        // 继承上下文的调度器运行
         // context of the parent, main runBlocking coroutine
         println("main runBlocking: I'm working in thread ${Thread.currentThread().name}")
         delay(1000)

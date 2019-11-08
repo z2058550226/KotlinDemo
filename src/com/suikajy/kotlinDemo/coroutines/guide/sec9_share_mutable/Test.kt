@@ -1,11 +1,19 @@
-package com.suikajy.kotlinDemo.coroutines.guide.sec8_share_mutable
+package com.suikajy.kotlinDemo.coroutines.guide.sec9_share_mutable
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.SendChannel
+import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.channels.consumeEach
+import java.util.concurrent.Executors
+import kotlin.coroutines.CoroutineContext
 import kotlin.system.measureTimeMillis
+
+fun main() {
+}
 
 var counter = 0
 
-fun main() = runBlocking {
+fun test1() = runBlocking {
     withContext(Dispatchers.Default) {
         massiveRun {
             counter++
@@ -29,3 +37,4 @@ suspend fun massiveRun(action: suspend () -> Unit) {
     }
     println("Completed ${n * k} actions in $time ms")
 }
+

@@ -8,9 +8,9 @@ import kotlinx.coroutines.channels.produce
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
-//fun main() {
-//    test6f1()
-//}
+fun main() {
+    test3f1()
+}
 
 /**
  * Channel basics
@@ -146,13 +146,5 @@ class BasicTest1 : CoroutineScope {
 
     val onClick: () -> Unit = {
         println("aaa")
-    }
-}
-
-fun main() {
-    val basicTest1 = BasicTest1()
-    for (i in 1..10000) {
-        Thread.sleep(1)
-        basicTest1.click()
     }
 }
