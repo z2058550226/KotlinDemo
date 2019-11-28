@@ -1,4 +1,4 @@
-package com.suikajy.kotlinDemo
+package com.suikajy.kotlinDemo.test
 
 fun main() {
     var a: A? = null

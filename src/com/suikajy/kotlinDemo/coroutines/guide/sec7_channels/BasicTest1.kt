@@ -1,15 +1,12 @@
 package com.suikajy.kotlinDemo.coroutines.guide.sec7_channels
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.channels.produce
+import kotlinx.coroutines.channels.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
 fun main() {
-    test3f1()
+    test8f1()
 }
 
 /**
@@ -24,7 +21,7 @@ fun test1f1() = runBlocking {
     }
     // here we print five received integers:
 //    println("2# ${Thread.currentThread()}")
-    delay(111)
+//    delay(111)
     repeat(3) { println(channel.receive()) }
     println("Done!")
 }
@@ -122,6 +119,67 @@ fun test6f1() = runBlocking {
     val channel = Channel<Int>(4) // create buffered channel
     val sender = launch {
         // launch sender coroutine
+        repeat(10) {
+            println("Sending $it") // print before sending each element
+            channel.send(it) // will suspend when buffer is full
+        }
+    }
+    // don't receive anything... just wait....
+    delay(1000)
+    sender.cancel() // cancel sender coroutine
+}
+
+
+/**
+ * Fan-out
+ */
+fun test7f1()= runBlocking{
+    fun CoroutineScope.produceNumbers() = produce<Int> {
+        var x = 1 // start from 1
+        while (true) {
+            send(x++) // produce next
+            delay(100) // wait 0.1s
+        }
+    }
+
+    fun CoroutineScope.launchProcessor(id: Int, channel: ReceiveChannel<Int>) = launch {
+        for (msg in channel) {
+            println("Processor #$id received $msg")
+        }
+    }
+
+    val producer = produceNumbers()
+    repeat(5) { launchProcessor(it, producer) }
+    delay(950)
+    producer.cancel()
+}
+
+/**
+ * Fan-in
+ */
+fun test8f1() = runBlocking{
+    suspend fun sendString(channel: SendChannel<String>, s: String, time: Long) {
+        while (true) {
+            delay(time)
+            channel.send(s)
+        }
+    }
+
+    val channel = Channel<String>()
+    launch { sendString(channel, "foo", 200L) }
+    launch { sendString(channel, "BAR!", 500L) }
+    repeat(6) { // receive first six
+        println(channel.receive())
+    }
+    coroutineContext.cancelChildren() // cancel all children to let main finish
+}
+
+/**
+ * Buffered Channel
+ */
+fun test9f1() = runBlocking<Unit> {
+    val channel = Channel<Int>(4) // create buffered channel
+    val sender = launch { // launch sender coroutine
         repeat(10) {
             println("Sending $it") // print before sending each element
             channel.send(it) // will suspend when buffer is full
