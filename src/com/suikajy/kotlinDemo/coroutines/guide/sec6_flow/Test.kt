@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import java.math.BigInteger
+import java.util.*
 import kotlin.system.measureTimeMillis
 
 fun foo(): Flow<Int> = flow {
@@ -21,7 +23,9 @@ fun main() = runBlocking {
         foo()
                 .buffer()// buffer emissions, don't wait
                 .collect { value ->
-                    // delay(300) // pretend we are processing it for 300 ms
+//                    BigInteger.probablePrime(4096, Random())
+                    Thread.sleep((3 - value) * 10000L)
+//                    delay(300) // pretend we are processing it for 300 ms
                     println(value)
                 }
     }
