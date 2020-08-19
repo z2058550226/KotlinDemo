@@ -1,19 +1,12 @@
-package com.suikajy.kotlinDemo.test
+package com.suikajy.kotlinDemo.ch11_DSL
 
 fun main() {
-    val a = A()
-    a.age = 4
-    println(a.age)
-    cA(a)
-    println(a.age)
-}
-
-private fun cA(a: A) {
-    a.age=5
-}
-
-private class A {
-    var age = 1
+    val test = TestBuilder().apply {
+        // 这里可以像TestBuilder内部一样用类内扩展方法
+        "ss".toName()
+        age = 2
+    }.build()
+    println(test)
 }
 
 data class Test(val name: String = "",

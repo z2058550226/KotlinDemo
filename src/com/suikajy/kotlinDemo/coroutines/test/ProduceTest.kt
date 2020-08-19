@@ -23,20 +23,19 @@ private fun test1() = runBlocking {
 private suspend fun downloadResource() =
         CoroutineScope(coroutineContext)
                 .produce {
-                try {
-                    download().consumeEach {
-                        this@produce.send(it)
+                    try {
+                        download().consumeEach {
+                            this@produce.send(it)
+                        }
+                        println("downloadResource over")
+                    } finally {
+                        println("downloadResource finally")
                     }
-                    println("downloadResource over")
-                } finally {
-                    println("downloadResource finally")
                 }
-            }
-
 
 
 private suspend fun download() = coroutineScope {
-    produce {
+    produce<Int> {
         delay(1000)
 
         suspend fun delaySend(element: Int) {

@@ -3,7 +3,7 @@ package com.suikajy.kotlinDemo.coroutines.guide.sec2_cancel
 import kotlinx.coroutines.*
 
 fun main() {
-    test6f1()
+    test1f1()
 
 }
 
