@@ -12,3 +12,10 @@ suspend fun suspendFunc02(a: String, b: String) = suspendCoroutine<Int> { contin
         continuation.resumeWith(Result.success(5))
     }
 }
+
+fun main() {
+    val lock = Object()
+    synchronized(lock) {
+        println(lock.`class` == lock.javaClass)
+    }
+}
