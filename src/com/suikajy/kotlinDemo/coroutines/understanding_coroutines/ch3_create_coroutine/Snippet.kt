@@ -19,6 +19,7 @@ suspend fun notSuspend() = suspendCoroutine<Int> { continuation ->
 // 此处查看suspendCoroutine方法源码，如果在获取返回值时（safe.getOrThrow()）已经有了返回值，就直接将返回值作为外部方法返回值
 // 如果没有返回值，就利用一个守护线程等待（挂起）结果后返回。
 // 挂起点：挂起函数中真正调用异步逻辑的位置。
+// @kotlin.internal.InlineOnly注解标识的方法在java中无法使用，应该是有编译器加成。
 suspend fun realSuspend() = suspendCoroutine<Int> { continuation ->
     thread {
         println("notSuspend " + Thread.currentThread().toString())
