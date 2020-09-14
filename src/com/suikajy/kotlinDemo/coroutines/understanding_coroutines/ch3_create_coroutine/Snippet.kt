@@ -21,9 +21,9 @@ suspend fun notSuspend() = suspendCoroutine<Int> { continuation ->
 // 挂起点：挂起函数中真正调用异步逻辑的位置。
 // @kotlin.internal.InlineOnly注解标识的方法在java中无法使用，应该是有编译器加成。
 suspend fun realSuspend() = suspendCoroutine<Int> { continuation ->
-    thread {
+    thread(isDaemon = true) {
         println("notSuspend " + Thread.currentThread().toString())
         Thread.sleep(2000L)
-//        continuation.resume(100)
+        continuation.resume(100)
     }
 }
